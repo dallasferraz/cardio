@@ -4,11 +4,15 @@ A Delphi project for a cardiology clinic. The physician in charge can calculate 
 
 ## SQL file
 
-### Tables:
+### Tables
+
+Here you will find the tables and fields of each table:
 
 **medicine**
 * idMedicine
 * label
+
+---
 
 **patient_header**
 * idPatient
@@ -22,7 +26,9 @@ A Delphi project for a cardiology clinic. The physician in charge can calculate 
 * patientACP
 * obs
 
-**tblCardioRisk
+---
+
+**tblCardioRisk**
 * idTblCardioRisk
 * patientCardioRisk
 * ateroObstrIllness
@@ -42,7 +48,9 @@ A Delphi project for a cardiology clinic. The physician in charge can calculate 
 * HDLc
 * statin
 
-**tblLee
+---
+
+**tblLee**
 * idTblLee
 * patientLee
 * surgeryITVSI
@@ -51,7 +59,9 @@ A Delphi project for a cardiology clinic. The physician in charge can calculate 
 * cerebrovascularDisease
 * preOpCreatinine
 
-**tblGoldman
+---
+
+**tblGoldman**
 * idTblGoldman
 * patientGoldman
 * age
@@ -66,7 +76,9 @@ A Delphi project for a cardiology clinic. The physician in charge can calculate 
 * surgeryAortaIPIT
 * emergencySurgery
 
-**tblACP
+---
+
+**tblACP**
 * idTblACP
 * patientACP
 * age
@@ -87,3 +99,6 @@ A Delphi project for a cardiology clinic. The physician in charge can calculate 
 * congestiveHeartFailure
 * ischemiaVarSTECG
 * highBPLeftVentr
+
+---
+
