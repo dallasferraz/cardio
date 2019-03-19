@@ -84,8 +84,8 @@ CREATE TABLE `patient_medicine` (
   PRIMARY KEY (`idPatientMedicine`),
   KEY `fk_patient_medicine_patient_header1_idx` (`fk_idPatient`),
   KEY `fk_patient_medicine_medicine1_idx` (`fk_idMedicine`),
-  CONSTRAINT `fk_patient_medicine_medicine1` FOREIGN KEY (`fk_idMedicine`) REFERENCES `medicine` (`idMedicine`),
-  CONSTRAINT `fk_patient_medicine_patient_header1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`)
+  CONSTRAINT `fk_patient_medicine_medicine1` FOREIGN KEY (`fk_idMedicine`) REFERENCES `medicine` (`idMedicine`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_patient_medicine_patient_header1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -128,7 +128,7 @@ CREATE TABLE `tbl_acp` (
   `fk_patientACP` int(11) NOT NULL,
   PRIMARY KEY (`idTblACP`),
   KEY `fk_tblacp_patient_header1_idx` (`fk_patientACP`),
-  CONSTRAINT `fk_tblacp_patient_header1` FOREIGN KEY (`fk_patientACP`) REFERENCES `patient_header` (`idPatient`)
+  CONSTRAINT `fk_tblacp_patient_header1` FOREIGN KEY (`fk_patientACP`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -169,7 +169,7 @@ CREATE TABLE `tbl_cardio_risk` (
   `fk_patientCardioRisk` int(11) NOT NULL,
   PRIMARY KEY (`idTblCardioRisk`),
   KEY `fk_tblcardiorisk_patient_header1_idx` (`fk_patientCardioRisk`),
-  CONSTRAINT `fk_tblcardiorisk_patient_header1` FOREIGN KEY (`fk_patientCardioRisk`) REFERENCES `patient_header` (`idPatient`)
+  CONSTRAINT `fk_tblcardiorisk_patient_header1` FOREIGN KEY (`fk_patientCardioRisk`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -205,7 +205,7 @@ CREATE TABLE `tbl_goldman` (
   `fk_patientGoldman` int(11) NOT NULL,
   PRIMARY KEY (`idTblGoldman`),
   KEY `fk_tblgoldman_patient_header1_idx` (`fk_patientGoldman`),
-  CONSTRAINT `fk_tblgoldman_patient_header1` FOREIGN KEY (`fk_patientGoldman`) REFERENCES `patient_header` (`idPatient`)
+  CONSTRAINT `fk_tblgoldman_patient_header1` FOREIGN KEY (`fk_patientGoldman`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -235,7 +235,7 @@ CREATE TABLE `tbl_lee` (
   `fk_patientLee` int(11) NOT NULL,
   PRIMARY KEY (`idTblLee`),
   KEY `fk_tbllee_patient_header1_idx` (`fk_patientLee`),
-  CONSTRAINT `fk_tbllee_patient_header1` FOREIGN KEY (`fk_patientLee`) REFERENCES `patient_header` (`idPatient`)
+  CONSTRAINT `fk_tbllee_patient_header1` FOREIGN KEY (`fk_patientLee`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -265,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-19 14:57:01
+-- Dump completed on 2019-03-19 15:45:37
