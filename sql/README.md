@@ -26,9 +26,15 @@ Here you will find the tables and fields of each table:
 
 --
 
+**patient_medicine**
+* idPatientMedicine
+* fk_idPatient
+* fk_idMedicine
+
+--
+
 **tblCardioRisk**
 * idTblCardioRisk
-* patientCardioRisk
 * thresholdAteroObstrIllness
 * dMellitus
 * dTypeI
@@ -45,23 +51,23 @@ Here you will find the tables and fields of each table:
 * computerTomography
 * HDLc
 * statin
+* fk_patientCardioRisk
 
 --
 
 **tblLee**
 * idTblLee
-* patientLee
 * surgeryITVSI
 * coronaryArterialDisease
 * congestiveHeartFailure
 * cerebrovascularDisease
 * thresholdPreOpCreatinine
+* fk_patientLee
 
 --
 
 **tblGoldman**
 * idTblGoldman
-* patientGoldman
 * age
 * thresholdMyocardialInfaction
 * thirdSoundJugularStasis
@@ -73,12 +79,12 @@ Here you will find the tables and fields of each table:
 * bed
 * surgeryAortaIPIT
 * emergencySurgery
+* fk_patientGoldman
 
 --
 
 **tblACP**
 * idTblACP
-* patientACP
 * age
 * thresholdMyocardialInfaction
 * thresholdPrevMyocardialInfarction
@@ -97,6 +103,7 @@ Here you will find the tables and fields of each table:
 * congestiveHeartFailure
 * ischemiaVarSTECG
 * highBPLeftVentr
+* fk_patientACP
 
 --
 
