@@ -4,8 +4,9 @@
 
 Here you will find the tables and fields of each table:
 
-![cardio SQL panorama](https://raw.githubusercontent.com/dallasferraz/cardio/master/sql/sql.jpg)
----
+![cardio SQL panorama](https://raw.githubusercontent.com/dallasferraz/cardio/sql/sql.jpg)
+
+--
 
 **medicine**
 * idMedicine
@@ -106,7 +107,7 @@ Here you will find the tables and fields of each table:
 * highBPLeftVentr
 * *fk_patientACP*
 
---
+---
 
 Each risk assessment method has its own way of evaluating how relevant each variable is. However, there are overlaps among criteria from different methods. So in order to avoid redundancy, some fields are automatically filled according to a previously filled table, if the fields coincide.
 
