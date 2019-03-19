@@ -14,11 +14,13 @@ The system is based on four different cardiac risk assessment, the first one bei
 
 Here you will find the tables and fields of each table:
 
+--
+
 **medicine**
 * idMedicine
 * label
 
----
+--
 
 **patient_header**
 * idPatient
@@ -32,7 +34,7 @@ Here you will find the tables and fields of each table:
 * patientACP
 * obs
 
----
+--
 
 **tblCardioRisk**
 * idTblCardioRisk
@@ -54,7 +56,7 @@ Here you will find the tables and fields of each table:
 * HDLc
 * statin
 
----
+--
 
 **tblLee**
 * idTblLee
@@ -65,7 +67,7 @@ Here you will find the tables and fields of each table:
 * cerebrovascularDisease
 * preOpCreatinine
 
----
+--
 
 **tblGoldman**
 * idTblGoldman
@@ -82,7 +84,7 @@ Here you will find the tables and fields of each table:
 * surgeryAortaIPIT
 * emergencySurgery
 
----
+--
 
 **tblACP**
 * idTblACP
@@ -106,7 +108,7 @@ Here you will find the tables and fields of each table:
 * ischemiaVarSTECG
 * highBPLeftVentr
 
----
+--
 
 Each risk assessment method has its own way of evaluating how relevant each variable is. However, there are overlaps among criteria from different methods. So in order to avoid redundancy, some fields are automatically filled according to a previously filled table, if the fields coincide.
 
