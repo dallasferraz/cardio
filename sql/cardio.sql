@@ -51,12 +51,13 @@ CREATE TABLE `patient_header` (
   `gender` varchar(1) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `nMedicines` int(11) DEFAULT NULL,
-  `patientCardioRisk` int(11) DEFAULT NULL,
-  `patientLee` int(11) DEFAULT NULL,
-  `patientGoldman` int(11) DEFAULT NULL,
-  `patientACP` int(11) DEFAULT NULL,
+  `patientCardioRisk` int(11) NOT NULL,
+  `patientLee` int(11) NOT NULL,
+  `patientGoldman` int(11) NOT NULL,
+  `patientACP` int(11) NOT NULL,
   `obs` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`idPatient`)
+  PRIMARY KEY (`idPatient`),
+  KEY `patientCardioRisk_idx` (`patientCardioRisk`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -70,15 +71,42 @@ LOCK TABLES `patient_header` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tblacp`
+-- Table structure for table `patient_medicine`
 --
 
-DROP TABLE IF EXISTS `tblacp`;
+DROP TABLE IF EXISTS `patient_medicine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `tblacp` (
+CREATE TABLE `patient_medicine` (
+  `idPatientMedicine` int(11) NOT NULL,
+  `fk_idPatient` int(11) NOT NULL,
+  `fk_idMedicine` int(11) NOT NULL,
+  PRIMARY KEY (`idPatientMedicine`),
+  KEY `fk_patient_medicine_patient_header1_idx` (`fk_idPatient`),
+  KEY `fk_patient_medicine_medicine1_idx` (`fk_idMedicine`),
+  CONSTRAINT `fk_patient_medicine_medicine1` FOREIGN KEY (`fk_idMedicine`) REFERENCES `medicine` (`idMedicine`),
+  CONSTRAINT `fk_patient_medicine_patient_header1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `patient_medicine`
+--
+
+LOCK TABLES `patient_medicine` WRITE;
+/*!40000 ALTER TABLE `patient_medicine` DISABLE KEYS */;
+/*!40000 ALTER TABLE `patient_medicine` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbl_acp`
+--
+
+DROP TABLE IF EXISTS `tbl_acp`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+ SET character_set_client = utf8mb4 ;
+CREATE TABLE `tbl_acp` (
   `idTblACP` int(11) NOT NULL,
-  `patientACP` int(11) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `thresholdMyocardialInfaction` tinyint(4) DEFAULT NULL,
   `thresholdPrevMyocardialInfarction` tinyint(4) DEFAULT NULL,
@@ -97,29 +125,31 @@ CREATE TABLE `tblacp` (
   `congestiveHeartFailure` tinyint(4) DEFAULT NULL,
   `ischemiaVarSTECG` tinyint(4) DEFAULT NULL,
   `highBPLeftVentr` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`idTblACP`)
+  `fk_patientACP` int(11) NOT NULL,
+  PRIMARY KEY (`idTblACP`),
+  KEY `fk_tblacp_patient_header1_idx` (`fk_patientACP`),
+  CONSTRAINT `fk_tblacp_patient_header1` FOREIGN KEY (`fk_patientACP`) REFERENCES `patient_header` (`idPatient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tblacp`
+-- Dumping data for table `tbl_acp`
 --
 
-LOCK TABLES `tblacp` WRITE;
-/*!40000 ALTER TABLE `tblacp` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tblacp` ENABLE KEYS */;
+LOCK TABLES `tbl_acp` WRITE;
+/*!40000 ALTER TABLE `tbl_acp` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_acp` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tblcardiorisk`
+-- Table structure for table `tbl_cardio_risk`
 --
 
-DROP TABLE IF EXISTS `tblcardiorisk`;
+DROP TABLE IF EXISTS `tbl_cardio_risk`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `tblcardiorisk` (
+CREATE TABLE `tbl_cardio_risk` (
   `idTblCardioRisk` int(11) NOT NULL,
-  `patientCardioRisk` int(11) DEFAULT NULL,
   `thresholdAteroObstrIllness` tinyint(4) DEFAULT NULL,
   `dMellitus` tinyint(4) DEFAULT NULL,
   `dTypeI` tinyint(4) DEFAULT NULL,
@@ -136,29 +166,31 @@ CREATE TABLE `tblcardiorisk` (
   `computerTomography` int(11) DEFAULT NULL,
   `HDLc` int(11) DEFAULT NULL,
   `statin` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`idTblCardioRisk`)
+  `fk_patientCardioRisk` int(11) NOT NULL,
+  PRIMARY KEY (`idTblCardioRisk`),
+  KEY `fk_tblcardiorisk_patient_header1_idx` (`fk_patientCardioRisk`),
+  CONSTRAINT `fk_tblcardiorisk_patient_header1` FOREIGN KEY (`fk_patientCardioRisk`) REFERENCES `patient_header` (`idPatient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tblcardiorisk`
+-- Dumping data for table `tbl_cardio_risk`
 --
 
-LOCK TABLES `tblcardiorisk` WRITE;
-/*!40000 ALTER TABLE `tblcardiorisk` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tblcardiorisk` ENABLE KEYS */;
+LOCK TABLES `tbl_cardio_risk` WRITE;
+/*!40000 ALTER TABLE `tbl_cardio_risk` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_cardio_risk` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tblgoldman`
+-- Table structure for table `tbl_goldman`
 --
 
-DROP TABLE IF EXISTS `tblgoldman`;
+DROP TABLE IF EXISTS `tbl_goldman`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `tblgoldman` (
+CREATE TABLE `tbl_goldman` (
   `idTblGoldman` int(11) NOT NULL,
-  `patientGoldman` int(11) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `thresholdMyocardialInfaction` tinyint(4) DEFAULT NULL,
   `thirdSoundJugularStasis` tinyint(4) DEFAULT NULL,
@@ -170,45 +202,50 @@ CREATE TABLE `tblgoldman` (
   `bed` tinyint(4) DEFAULT NULL,
   `surgeryAortaIPIT` tinyint(4) DEFAULT NULL,
   `emergencySurgery` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`idTblGoldman`)
+  `fk_patientGoldman` int(11) NOT NULL,
+  PRIMARY KEY (`idTblGoldman`),
+  KEY `fk_tblgoldman_patient_header1_idx` (`fk_patientGoldman`),
+  CONSTRAINT `fk_tblgoldman_patient_header1` FOREIGN KEY (`fk_patientGoldman`) REFERENCES `patient_header` (`idPatient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tblgoldman`
+-- Dumping data for table `tbl_goldman`
 --
 
-LOCK TABLES `tblgoldman` WRITE;
-/*!40000 ALTER TABLE `tblgoldman` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tblgoldman` ENABLE KEYS */;
+LOCK TABLES `tbl_goldman` WRITE;
+/*!40000 ALTER TABLE `tbl_goldman` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_goldman` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `tbllee`
+-- Table structure for table `tbl_lee`
 --
 
-DROP TABLE IF EXISTS `tbllee`;
+DROP TABLE IF EXISTS `tbl_lee`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
-CREATE TABLE `tbllee` (
+CREATE TABLE `tbl_lee` (
   `idTblLee` int(11) NOT NULL,
-  `patientLee` int(11) DEFAULT NULL,
   `surgeryITVSI` tinyint(4) DEFAULT NULL,
   `coronaryArterialDisease` tinyint(4) DEFAULT NULL,
   `congestiveHeartFailure` tinyint(4) DEFAULT NULL,
   `cerebrovascularDisease` tinyint(4) DEFAULT NULL,
   `thresholdPreOpCreatinine` tinyint(4) DEFAULT NULL,
-  PRIMARY KEY (`idTblLee`)
+  `fk_patientLee` int(11) NOT NULL,
+  PRIMARY KEY (`idTblLee`),
+  KEY `fk_tbllee_patient_header1_idx` (`fk_patientLee`),
+  CONSTRAINT `fk_tbllee_patient_header1` FOREIGN KEY (`fk_patientLee`) REFERENCES `patient_header` (`idPatient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbllee`
+-- Dumping data for table `tbl_lee`
 --
 
-LOCK TABLES `tbllee` WRITE;
-/*!40000 ALTER TABLE `tbllee` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tbllee` ENABLE KEYS */;
+LOCK TABLES `tbl_lee` WRITE;
+/*!40000 ALTER TABLE `tbl_lee` DISABLE KEYS */;
+/*!40000 ALTER TABLE `tbl_lee` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -228,4 +265,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-19 11:54:57
+-- Dump completed on 2019-03-19 14:57:01
