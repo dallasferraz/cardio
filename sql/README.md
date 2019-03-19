@@ -29,16 +29,16 @@ Here you will find the tables and fields of each table:
 **tblCardioRisk**
 * idTblCardioRisk
 * patientCardioRisk
-* ateroObstrIllness
+* thresholdAteroObstrIllness
 * dMellitus
 * dTypeI
 * dTypeII
 * plaqueCarotidUS
-* ankleBrachialIndex
+* thresholdAnkleBrachialIndex
 * calciumCoronaryScore
 * abdominalAorticAneurysm
-* chronicKidneyDisease
-* LDLc
+* thresholdChronicKidneyDisease
+* thresholdLDLc
 * systolicBloodPressure
 * treatedSystolicBloodPressure
 * smoke
@@ -55,7 +55,7 @@ Here you will find the tables and fields of each table:
 * coronaryArterialDisease
 * congestiveHeartFailure
 * cerebrovascularDisease
-* preOpCreatinine
+* thresholdPreOpCreatinine
 
 --
 
