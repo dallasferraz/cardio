@@ -4,7 +4,7 @@
 
 Here you will find the tables and fields of each table:
 
-![cardio SQL panorama](https://raw.githubusercontent.com/dallasferraz/cardio/sql/sql.jpg)
+![cardio SQL panorama](https://raw.githubusercontent.com/dallasferraz/cardio/master/sql/sql.jpg)
 
 --
 
