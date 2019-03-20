@@ -21,6 +21,7 @@ Here you will find the tables and fields of each table. Even though Microsoft Ac
 * age
 * nMedicines
 * obs
+* surgeryType
 
 --
 
