@@ -20,10 +20,6 @@ Here you will find the tables and fields of each table:
 * gender
 * age
 * nMedicines
-* patientCardioRisk
-* patientLee
-* patientGoldman
-* patientACP
 * obs
 
 --

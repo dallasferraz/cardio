@@ -35,6 +35,7 @@ CREATE TABLE `medicine` (
 
 LOCK TABLES `medicine` WRITE;
 /*!40000 ALTER TABLE `medicine` DISABLE KEYS */;
+INSERT INTO `medicine` VALUES (1,'med1'),(2,'med2'),(3,'med3');
 /*!40000 ALTER TABLE `medicine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,13 +52,8 @@ CREATE TABLE `patient_header` (
   `gender` varchar(1) DEFAULT NULL,
   `age` int(11) DEFAULT NULL,
   `nMedicines` int(11) DEFAULT NULL,
-  `patientCardioRisk` int(11) NOT NULL,
-  `patientLee` int(11) NOT NULL,
-  `patientGoldman` int(11) NOT NULL,
-  `patientACP` int(11) NOT NULL,
   `obs` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`idPatient`),
-  KEY `patientCardioRisk_idx` (`patientCardioRisk`)
+  PRIMARY KEY (`idPatient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -67,6 +63,7 @@ CREATE TABLE `patient_header` (
 
 LOCK TABLES `patient_header` WRITE;
 /*!40000 ALTER TABLE `patient_header` DISABLE KEYS */;
+INSERT INTO `patient_header` VALUES (1,'john','M',35,2,'NA');
 /*!40000 ALTER TABLE `patient_header` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -82,10 +79,10 @@ CREATE TABLE `patient_medicine` (
   `fk_idPatient` int(11) NOT NULL,
   `fk_idMedicine` int(11) NOT NULL,
   PRIMARY KEY (`idPatientMedicine`),
-  KEY `fk_patient_medicine_patient_header1_idx` (`fk_idPatient`),
-  KEY `fk_patient_medicine_medicine1_idx` (`fk_idMedicine`),
-  CONSTRAINT `fk_patient_medicine_medicine1` FOREIGN KEY (`fk_idMedicine`) REFERENCES `medicine` (`idMedicine`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_patient_medicine_patient_header1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `idPatient_idx` (`fk_idPatient`),
+  KEY `idMedicine_idx` (`fk_idMedicine`),
+  CONSTRAINT `patient_medicine_ibfk_1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `patient_medicine_ibfk_2` FOREIGN KEY (`fk_idMedicine`) REFERENCES `medicine` (`idMedicine`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -95,6 +92,7 @@ CREATE TABLE `patient_medicine` (
 
 LOCK TABLES `patient_medicine` WRITE;
 /*!40000 ALTER TABLE `patient_medicine` DISABLE KEYS */;
+INSERT INTO `patient_medicine` VALUES (1,1,2),(2,1,3);
 /*!40000 ALTER TABLE `patient_medicine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,10 +123,10 @@ CREATE TABLE `tbl_acp` (
   `congestiveHeartFailure` tinyint(4) DEFAULT NULL,
   `ischemiaVarSTECG` tinyint(4) DEFAULT NULL,
   `highBPLeftVentr` tinyint(4) DEFAULT NULL,
-  `fk_patientACP` int(11) NOT NULL,
+  `fk_idPatient` int(11) NOT NULL,
   PRIMARY KEY (`idTblACP`),
-  KEY `fk_tblacp_patient_header1_idx` (`fk_patientACP`),
-  CONSTRAINT `fk_tblacp_patient_header1` FOREIGN KEY (`fk_patientACP`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `fk_patientACP_UNIQUE` (`fk_idPatient`),
+  CONSTRAINT `idPatient` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -138,6 +136,7 @@ CREATE TABLE `tbl_acp` (
 
 LOCK TABLES `tbl_acp` WRITE;
 /*!40000 ALTER TABLE `tbl_acp` DISABLE KEYS */;
+INSERT INTO `tbl_acp` VALUES (1,35,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1);
 /*!40000 ALTER TABLE `tbl_acp` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,10 +165,10 @@ CREATE TABLE `tbl_cardio_risk` (
   `computerTomography` int(11) DEFAULT NULL,
   `HDLc` int(11) DEFAULT NULL,
   `statin` tinyint(4) DEFAULT NULL,
-  `fk_patientCardioRisk` int(11) NOT NULL,
+  `fk_idPatient` int(11) NOT NULL,
   PRIMARY KEY (`idTblCardioRisk`),
-  KEY `fk_tblcardiorisk_patient_header1_idx` (`fk_patientCardioRisk`),
-  CONSTRAINT `fk_tblcardiorisk_patient_header1` FOREIGN KEY (`fk_patientCardioRisk`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `fk_idPatient_UNIQUE` (`fk_idPatient`) /*!80000 INVISIBLE */,
+  CONSTRAINT `tbl_cardio_risk_ibfk_1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -179,6 +178,7 @@ CREATE TABLE `tbl_cardio_risk` (
 
 LOCK TABLES `tbl_cardio_risk` WRITE;
 /*!40000 ALTER TABLE `tbl_cardio_risk` DISABLE KEYS */;
+INSERT INTO `tbl_cardio_risk` VALUES (1,0,0,0,1,0,0,0,0,0,0,110,115,1,5,150,0,1);
 /*!40000 ALTER TABLE `tbl_cardio_risk` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -202,10 +202,10 @@ CREATE TABLE `tbl_goldman` (
   `bed` tinyint(4) DEFAULT NULL,
   `surgeryAortaIPIT` tinyint(4) DEFAULT NULL,
   `emergencySurgery` tinyint(4) DEFAULT NULL,
-  `fk_patientGoldman` int(11) NOT NULL,
+  `fk_idPatient` int(11) NOT NULL,
   PRIMARY KEY (`idTblGoldman`),
-  KEY `fk_tblgoldman_patient_header1_idx` (`fk_patientGoldman`),
-  CONSTRAINT `fk_tblgoldman_patient_header1` FOREIGN KEY (`fk_patientGoldman`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `fk_idPatient_UNIQUE` (`fk_idPatient`),
+  CONSTRAINT `tbl_goldman_ibfk_1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -232,10 +232,10 @@ CREATE TABLE `tbl_lee` (
   `congestiveHeartFailure` tinyint(4) DEFAULT NULL,
   `cerebrovascularDisease` tinyint(4) DEFAULT NULL,
   `thresholdPreOpCreatinine` tinyint(4) DEFAULT NULL,
-  `fk_patientLee` int(11) NOT NULL,
+  `fk_idPatient` int(11) NOT NULL,
   PRIMARY KEY (`idTblLee`),
-  KEY `fk_tbllee_patient_header1_idx` (`fk_patientLee`),
-  CONSTRAINT `fk_tbllee_patient_header1` FOREIGN KEY (`fk_patientLee`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `fk_idPatient_UNIQUE` (`fk_idPatient`),
+  CONSTRAINT `tbl_lee_ibfk_1` FOREIGN KEY (`fk_idPatient`) REFERENCES `patient_header` (`idPatient`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -245,6 +245,7 @@ CREATE TABLE `tbl_lee` (
 
 LOCK TABLES `tbl_lee` WRITE;
 /*!40000 ALTER TABLE `tbl_lee` DISABLE KEYS */;
+INSERT INTO `tbl_lee` VALUES (1,0,0,0,0,0,1);
 /*!40000 ALTER TABLE `tbl_lee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -265,4 +266,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-19 15:45:37
+-- Dump completed on 2019-03-20  9:54:55
