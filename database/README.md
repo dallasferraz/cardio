@@ -22,6 +22,10 @@ Here you will find the tables and fields of each table. Even though Microsoft Ac
 * nMedicines
 * obs
 * surgeryType
+* historyCardioRisk
+* historyACP
+* historyLee
+* historyGoldman
 
 --
 

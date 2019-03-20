@@ -54,6 +54,10 @@ CREATE TABLE `patient_header` (
   `nMedicines` int(11) DEFAULT NULL,
   `obs` varchar(200) DEFAULT NULL,
   `surgeryType` varchar(100) DEFAULT NULL,
+  `historyCardioRisk` float DEFAULT NULL,
+  `historyACP` float DEFAULT NULL,
+  `historyLee` float DEFAULT NULL,
+  `historyGoldman` float DEFAULT NULL,
   PRIMARY KEY (`idPatient`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -64,7 +68,7 @@ CREATE TABLE `patient_header` (
 
 LOCK TABLES `patient_header` WRITE;
 /*!40000 ALTER TABLE `patient_header` DISABLE KEYS */;
-INSERT INTO `patient_header` VALUES (1,'john','M',35,2,'NA',NULL);
+INSERT INTO `patient_header` VALUES (1,'john','M',35,2,'NA',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `patient_header` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -267,4 +271,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-20 19:10:50
+-- Dump completed on 2019-03-20 20:06:33
