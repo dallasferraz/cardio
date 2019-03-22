@@ -54,7 +54,7 @@ Here you will find the tables and fields of each table. Even though Microsoft Ac
 * computerTomography
 * HDLc
 * statin
-* *fk_patientCardioRisk*
+* *fk_idPatient*
 
 --
 
@@ -65,14 +65,14 @@ Here you will find the tables and fields of each table. Even though Microsoft Ac
 * congestiveHeartFailure
 * cerebrovascularDisease
 * thresholdPreOpCreatinine
-* *fk_patientLee*
+* *fk_idPatient*
 
 --
 
 **tbl_goldman**
 * idTblGoldman
 * age
-* thresholdMyocardialInfaction
+* thresholdMyocardialInfarction
 * thirdSoundJugularStasis
 * severeAorticStenosis
 * preOpDRSinusalExtraSystSVECG
@@ -82,14 +82,14 @@ Here you will find the tables and fields of each table. Even though Microsoft Ac
 * bed
 * surgeryAortaIPIT
 * emergencySurgery
-* *fk_patientGoldman*
+* *fk_idPatient*
 
 --
 
 **tbl_acp**
 * idTblACP
 * age
-* thresholdMyocardialInfaction
+* thresholdMyocardialInfarction
 * thresholdPrevMyocardialInfarction
 * anginaIII
 * anginaIV
@@ -106,7 +106,7 @@ Here you will find the tables and fields of each table. Even though Microsoft Ac
 * congestiveHeartFailure
 * ischemiaVarSTECG
 * highBPLeftVentr
-* *fk_patientACP*
+* *fk_idPatient*
 
 ---
 
