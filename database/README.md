@@ -2,10 +2,7 @@
 
 ## Tables
 
-Here you will find the tables and fields of each table. Even though Microsoft Access was used to create the tables, you will find bellow a representation of table relationship on SQL. The file for this relationship is also available, along with a MySQL version and the original MAccess file:
-
-![cardio SQL panorama](https://raw.githubusercontent.com/dallasferraz/cardio/master/database/sql.jpg)
-
+Here you will find the tables and fields of each table in Microsoft Access.
 --
 
 **medicine**
@@ -33,6 +30,35 @@ Here you will find the tables and fields of each table. Even though Microsoft Ac
 * idPatientMedicine
 * *fk_idPatient*
 * *fk_idMedicine*
+
+--
+
+**trial**
+* idTrial
+* noSymptoms
+* dyspnea
+* headache
+* toraxPain
+* edemaMMII
+* syncope
+* palpitations
+* recordHighBP
+* recordThyroidDisease
+* recordAshtmaBronchus
+* recordPVM
+* recordArrhythmia
+* recordDyslipidemia
+* recordDrugAlergy
+* recordDMellitus
+* recordCoronaryDisease
+* recordCardCog
+* CPETAS
+* CPETAD
+* CPEACV
+* CPEAR
+* CPEMMII
+* ECG
+* *fk_idPatient*
 
 --
 
