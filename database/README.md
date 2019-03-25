@@ -8,6 +8,7 @@ Here you will find the tables and fields of each table in Microsoft Access.
 **medicine**
 * idMedicine
 * label
+* quantity
 
 --
 
@@ -81,6 +82,9 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * HDLc
 * statin
 * *fk_idPatient*
+* highRisk
+* mediumRisk
+* lowRisk
 
 --
 
@@ -92,6 +96,10 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * cerebrovascularDisease
 * thresholdPreOpCreatinine
 * *fk_idPatient*
+* classI
+* classII
+* classIII
+* classIV
 
 --
 
@@ -109,6 +117,10 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * surgeryAortaIPIT
 * emergencySurgery
 * *fk_idPatient*
+* classI
+* classII
+* classIII
+* classIV
 
 --
 
@@ -133,6 +145,9 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * ischemiaVarSTECG
 * highBPLeftVentr
 * *fk_idPatient*
+* highRisk
+* mediumRisk
+* lowRisk
 
 ---
 
