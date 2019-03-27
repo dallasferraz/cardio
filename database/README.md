@@ -82,9 +82,11 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * HDLc
 * statin
 * *fk_idPatient*
-* highRisk
-* mediumRisk
 * lowRisk
+* mediumRisk
+* highRisk
+* veryHighRisk
+* outcome
 
 --
 
