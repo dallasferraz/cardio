@@ -87,6 +87,10 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * highRisk
 * veryHighRisk
 * outcome
+* goalPercentDecrease
+* goalPercentDecreaseBottom
+* goalLDLc
+* goalNHDLc
 
 --
 
@@ -102,6 +106,7 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * classII
 * classIII
 * classIV
+* dMellitus
 
 --
 
