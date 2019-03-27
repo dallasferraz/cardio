@@ -65,20 +65,10 @@ Here you will find the tables and fields of each table in Microsoft Access.
 
 **tbl_cardio_risk**
 * idTblCardioRisk
-* thresholdAteroObstrIllness
-* dMellitus
-* dTypeI
-* dTypeII
-* plaqueCarotidUS
-* thresholdAnkleBrachialIndex
-* calciumCoronaryScore
-* abdominalAorticAneurysm
-* thresholdChronicKidneyDisease
-* thresholdLDLc
-* systolicBloodPressure
-* treatedSystolicBloodPressure
+* PAS
+* treatedPAS
+* CT
 * smoke
-* computerTomography
 * HDLc
 * statin
 * *fk_idPatient*
