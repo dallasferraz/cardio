@@ -17,7 +17,6 @@ Here you will find the tables and fields of each table in Microsoft Access.
 * name
 * gender
 * age
-* nMedicines
 * obs
 * surgeryType
 * historyCardioRisk
@@ -35,7 +34,7 @@ Here you will find the tables and fields of each table in Microsoft Access.
 
 --
 
-**trial**
+**trial_patient**
 * idTrial
 * noSymptoms
 * dyspnea
