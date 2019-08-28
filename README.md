@@ -7,3 +7,5 @@ The system is based on four different cardiac risk assessment, the first one bei
 * Lee
 * Goldman
 * American College of Physicians (ACP)
+
+I was in charge of the database, so I provided both a Microsoft Access version and a MySQL version of the database.
