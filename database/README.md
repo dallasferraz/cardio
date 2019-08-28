@@ -2,7 +2,7 @@
 
 ## Tables
 
-Here you will find the tables and fields of each table in Microsoft Access.
+Here you will find the tables and fields of each table constructed both to Microsoft Access and MySQL.
 --
 
 **medicine**
@@ -159,3 +159,7 @@ Each field is linked to a variable that is filled by the physician during consul
 Below you can see a screenshot of the tables relationship in Microsoft Access:
 
 ![cardio MS Access panorama](https://raw.githubusercontent.com/dallasferraz/cardio/master/database/dbaccess.png)
+
+And here you can see a screenshot of the tables relationship in MySQL:
+
+![cardio MySQL panorama](https://raw.githubusercontent.com/dallasferraz/cardio/master/database/dbmysql.png)
