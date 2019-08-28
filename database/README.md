@@ -155,3 +155,7 @@ Many fields are self-explanatory and need no further explanation, such as *age* 
 Some criteria were split into two or three fields. This was necessary due to the nature of the assessment algorithm, which may ask more than one relevant question in just one step. For instance, Goldman asks about farmaceutical compounds thresholds at the same time it asks about whether the  patient is bedridden and about their liver. The three questions, even though addressed in just one step, were divided and represented in three different fields, namely *thresholdCompounds*, *bed* and *transHepatic*.
 
 Each field is linked to a variable that is filled by the physician during consultation. The majority of variables/fields is of boolean nature and the names were chosen to be as clear as possible for those who have intent to copy, modify or understand this project. If the relation of elements is not clear and the names are not meaningful enough, please refer to a specific website, by clicking [here](https://qxmd.com/calculate/calculator_195/revised-cardiac-risk-index-lee-criteria), [here](https://www.acponline.org/) and [here](https://reference.medscape.com/calculator/cardiac-risk-noncardiac-surgery-goldman)
+
+Below you can see a screenshot of the tables relationship in Microsoft Access:
+
+![cardio MS Access panorama](https://raw.githubusercontent.com/dallasferraz/cardio/master/database/dbaccess.png)
