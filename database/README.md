@@ -2,7 +2,7 @@
 
 ## Tables
 
-Here you will find the tables and fields of each table constructed both to Microsoft Access and MySQL.
+Here you will find the tables and fields of each table constructed both for Microsoft Access and MySQL.
 --
 
 **medicine**
